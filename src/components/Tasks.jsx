@@ -1,39 +1,37 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Task from "./Task";
 
 const Tasks = ({ addTask }) => {
     const [task1, setTask] = useState();
     const [date1, setDate] = useState();
-    const [taskObj, setTaskObj] = useState({});
-    const makeObj = () => {
-        setTaskObj({ task: task1, date: date1 })
-    }
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addTask(taskObj)
+        addTask({ task: task1, date: date1 })
         setTask("");
         setDate("");
     };
-
     return (
-        <div>
+        <div className="form-container">
             <form onSubmit={handleSubmit}>
                 <label htmlFor="">Task</label>
                 <input
+                    className="task-input"
                     type="text"
                     value={task1}
-                    onChange={(e) => setTask({ task: e.target.value })}
+                    onChange={(e) => setTask(e.target.value)}
                 />
                 <label htmlFor="">Day & Time</label>
-                <input type="datetime-local"
+                <input
+                    className="date-input"
+                    type="datetime-local"
                     value={date1}
-                    onChange={(e) => setDate({ date: e.target.value })}
+                    onChange={(e) => setDate(e.target.value)}
                     name="" id="" />
-                <button >Save Task</button>
+                <button className="task-save-btn" >Save Task</button>
             </form>
             { }
-            <Task makeObj={makeObj} />
+            <Task task1={task1} date1={date1} />
         </div>
     );
 };

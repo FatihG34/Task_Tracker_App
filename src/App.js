@@ -1,16 +1,14 @@
-
 import './App.css';
-import AddTask from './components/AddTask';
 import Header from './components/Header';
 
 
 function App() {
-
+  const addTask = (tasks) => {
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+  }
   return (
     <div className="main-container">
-      <Header />
-      {/* <AddTask /> */}
-
+      <Header addTask={addTask} />
     </div>
   );
 }

@@ -6,7 +6,7 @@ const Button = ({ editShow }) => {
 
     return (
         <div>
-            <button onClick={() => {
+            <button className='show-hide-btn' onClick={() => {
                 editShow();
                 setShows(!shows)
             }} >{shows ? "Hide Add Task Bar" : "Show Add Task Bar"}</button>
