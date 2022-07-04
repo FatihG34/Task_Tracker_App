@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 
-const Button = () => {
-    const [show, setShow] = useState(true)
-    console.log(show);
+const Button = ({ editShow }) => {
+    const [shows, setShows] = useState(true)
+    // console.log(show);
 
     return (
         <div>
-            <button onClick={() => setShow(!show)}>Show Add Task Bar</button>
-        </div>
+            <button onClick={() => {
+                editShow();
+                setShows(!shows)
+            }} >{shows ? "Hide Add Task Bar" : "Show Add Task Bar"}</button>
+        </div >
     )
 }
 
