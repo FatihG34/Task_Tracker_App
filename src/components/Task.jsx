@@ -1,19 +1,26 @@
 
-const Task = ({ task1, date1 }) => {
-    // let taskDate = localStorage.getItem()
+const Task = ({ localTask }) => {
+
+    // console.log(localTask);
 
 
     return (
         <ul className='task-ul'>
-            <li>
-                <p>
-                    {task1}
-                </p>
-                <p>
-                    {date1 && date1.slice(0, 10)}  {date1 && ("& " + date1.slice(11))}
-                </p>
+            {localTask && localTask.map((itemTask) => {
+                const { id, task, date, isdone } = itemTask;
+                return (
+                    <li key={id} >
+                        <p>
+                            {task}
+                        </p>
+                        <p>
+                            {date && date.slice(0, 10)}  {date && ("& " + date.slice(11))}
+                        </p>
 
-            </li>
+                    </li>
+                )
+            })}
+
         </ul>
     )
 }

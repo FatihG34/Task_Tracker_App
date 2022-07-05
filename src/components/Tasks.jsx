@@ -1,13 +1,15 @@
 import { useState } from "react";
 import Task from "./Task";
 
-const Tasks = ({ addTask }) => {
+const Tasks = ({ setItems, localTask }) => {
     const [task1, setTask] = useState();
     const [date1, setDate] = useState();
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addTask({ task: task1, date: date1 })
+        let id = new Date().getTime();
+        let isDone = false;
+        setItems([{ id: id, task: task1, date: date1, idDone: isDone }])
         setTask("");
         setDate("");
     };
@@ -30,8 +32,7 @@ const Tasks = ({ addTask }) => {
                     name="" id="" />
                 <button className="task-save-btn" >Save Task</button>
             </form>
-            { }
-            <Task task1={task1} date1={date1} />
+            <Task localTask={localTask} />
         </div>
     );
 };
