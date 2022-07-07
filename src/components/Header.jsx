@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Button from './Button';
 import Tasks from './Tasks';
 
-const Header = ({ setItems, localTask }) => {
+const Header = ({ setLocalTask, localTask }) => {
     const [show, setShow] = useState(true);
     const editShow = () => {
         setShow(!show);
@@ -12,7 +12,7 @@ const Header = ({ setItems, localTask }) => {
         <div className='header'>
             <h1>Task Tracker</h1>
             <Button editShow={editShow} />
-            {show && <Tasks setItems={setItems} localTask={localTask} />}
+            {show && <Tasks setLocalTask={setLocalTask} localTask={localTask} />}
         </div>
     )
 }

@@ -4,27 +4,29 @@ import Header from './components/Header';
 
 
 function App() {
-  const [items, setItems] = useState([]);
-  const [localTask, setLocalTask] = useState([])
-  // const addTask = (tasks) => {
-  //   setItems(tasks)
+  const [localTask, setLocalTask] = useState(JSON.parse(localStorage.getItem("localTask")) || []);
+  // const addTask = () => {
+  //   localStorage.setItem("localTask", JSON.stringify(localTask));
+  // }
+  // addTask();
+  // useEffect(() => {
+  //   localStorage.setItem("items", JSON.stringify(items));
+
+  // }, [])
+
+  // const showTasks = () => {
+  //   let task = JSON.parse(localStorage.getItem("items"));
+  //   setLocalTask(task)
+  //   console.log(task);
   // };
-  useEffect(() => {
-    localStorage.setItem("items", JSON.stringify(items));
 
-  }, [items])
-
-  const showTasks = () => {
-    let task = JSON.parse(localStorage.getItem("tasks"));
-    setLocalTask(task)
-  }
   useEffect(() => {
-    showTasks();
-  }, [])
-  console.log(localTask);
+    localStorage.setItem("localTask", JSON.stringify(localTask));
+  }, [localTask])
+
   return (
     <div className="main-container">
-      <Header setItems={setItems} localTask={localTask} />
+      <Header setLocalTask={setLocalTask} localTask={localTask} />
     </div>
   );
 }

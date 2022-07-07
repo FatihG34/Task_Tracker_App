@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Task from "./Task";
 
-const Tasks = ({ setItems, localTask }) => {
+const Tasks = ({ setLocalTask, localTask }) => {
     const [task1, setTask] = useState();
     const [date1, setDate] = useState();
 
@@ -9,7 +9,7 @@ const Tasks = ({ setItems, localTask }) => {
         e.preventDefault();
         let id = new Date().getTime();
         let isDone = false;
-        setItems([{ id: id, task: task1, date: date1, idDone: isDone }])
+        setLocalTask([...localTask, { id: id, task: task1, date: date1, isDone: isDone }])
         setTask("");
         setDate("");
     };
