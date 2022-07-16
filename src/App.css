@@ -48,7 +48,7 @@ body {
 }
 
 .form-control input {
-    width: 100%;
+    width: 50%;
     height: 40px;
     padding: 1rem;
     font-size: 1rem;
@@ -58,16 +58,20 @@ body {
 
 .btn-submit {
     display: block;
-    width: 100%;
+    width: 50%;
     background-color: purple;
-    margin: 2rem 0;
+    margin: 2rem auto;
 }
 
 .task {
+    width: 50%;
     background: #f4f4f4;
-    margin: 0.7rem;
+    margin: 0.7rem auto;
     padding: 0.5rem 1rem;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .done {

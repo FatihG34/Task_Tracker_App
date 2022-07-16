@@ -1,25 +1,27 @@
 import AddTaskForm from "./AddTask";
+import ShowTasks from './ShowTask';
 import { useState } from "react";
 
 const Header = ({ tasks, setTasks }) => {
     const [show, setShow] = useState(false);
     const [btnStyle, setBtnStyle] = useState({
         name: "Show Add Task Bar",
-        bgColor: "purple"
+        bgColor: "purple",
+        color: 'white'
     });
 
     const handleShow = () => {
-        // setShow(!show)
-        //! async çalıştığı için önce show un ilk değerini alıyor if bloğu show un ilk değerine  göre dönüyor bu işlemler sonrasında state güncelleniyor
         if (show) {
             setBtnStyle({
                 name: "Show Add Task Bar",
-                bgColor: "purple"
+                bgColor: "purple",
+                color: 'white'
             })
         } else {
             setBtnStyle({
                 name: "Close Add Task Bar",
-                bgColor: "red"
+                bgColor: "orange",
+                color: 'black'
             })
         }
         setShow(!show)
@@ -27,8 +29,9 @@ const Header = ({ tasks, setTasks }) => {
 
     return <header className="header">
         <h1>Task Tracker</h1>
-        <button onClick={handleShow} className="btn" style={{ backgroundColor: btnStyle.bgColor }}>{btnStyle.name}</button>
+        <button onClick={handleShow} className="btn" style={{ backgroundColor: btnStyle.bgColor, color: btnStyle.color }}>{btnStyle.name}</button>
         {show && <AddTaskForm tasks={tasks} setTasks={setTasks} />}
+        {show && <ShowTasks tasks={tasks} setTasks={setTasks} />}
     </header>;
 };
 
